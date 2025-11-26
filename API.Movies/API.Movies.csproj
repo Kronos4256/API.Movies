@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="MOVIESMAPPER\" />
     <Folder Include="Controllers\" />
-    <Folder Include="RESPOSITORY\iREPOSITORY\" />
   </ItemGroup>
 
 </Project>

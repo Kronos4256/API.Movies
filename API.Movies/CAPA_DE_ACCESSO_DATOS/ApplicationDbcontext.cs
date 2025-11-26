@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Movies.CAPA_DE_ACCESSO_DATOS
 {
-    public class ApliccationDBcontext : DbContext
+    public class ApplicationDbcontext : DbContext
     {
-        public ApliccationDBcontext(DbContextOptions<ApliccationDBcontext>options):base(options)
+        public ApplicationDbcontext(DbContextOptions<ApplicationDbcontext>options):base(options)
         {
             
         }
