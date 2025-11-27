@@ -7,7 +7,7 @@ namespace API.Movies.CAPA_DE_ACCESSO_DATOS.MODELS
         [Key]//Primary Key
         public virtual int Id { get; set; }
         public virtual DateTime CreatedDate { get; set; }
-        public virtual DateTime ModifiedDate { get; set; }
+        public virtual DateTime? ModifiedDate { get; set; }
 
     }
 }
