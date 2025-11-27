@@ -15,7 +15,7 @@ namespace API.Movies.Controllers
         {
             _categoryService = categoryService;
         }
-        [HttpGet]
+        [HttpGet(Name ="CreateCategoryAsync")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -34,6 +34,39 @@ namespace API.Movies.Controllers
         {
             var categoryDto = await _categoryService.GetCategoryByIdAsync(id);
             return Ok(categoryDto);
+        }
+
+
+        [HttpPost(Name = "CreateCategoryAsync")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        public async Task<ActionResult<CategoryDto>> CreatedCategoryAsync([FromBody] CategoryCreateDto categoryCreateDto)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var createdCategory = await _categoryService.CreateCategoryAsync(categoryCreateDto);
+                return CreatedAtRoute("GetCategoryAsync", new { id = createdCategory.Id }, createdCategory);
+            }
+            
+            catch(InvalidOperationException ex) when (ex.Message.Contains("Ya existe una categoría"))
+            {
+                return Conflict(new { ex.Message});
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+       
+
+
         }
     }
 }
