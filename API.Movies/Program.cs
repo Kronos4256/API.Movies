@@ -13,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbcontext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
 builder.Services.AddAutoMapper(cfg=>cfg.AddProfile<Mappers>());
 
+builder.Services.AddScoped<IMOVIEREPOSITORY, MovieRepository>();
+builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<ICategoryservice, CategoryService>();
 builder.Services.AddScoped<iCATEGORYREPOSITORY, CategoryRepository>();
 
