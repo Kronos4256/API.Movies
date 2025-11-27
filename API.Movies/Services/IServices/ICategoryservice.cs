@@ -12,6 +12,7 @@ namespace API.Movies.Services.IServices
         Task<bool> CategoryExistsByNameAsync(string categoryName);//Me indica si una categoria existe por su nombre
         //Task<bool> CreateCategoryAsync(Category category);//Me crea una nueva categoria
         Task<CategoryDto> UpdateCategoryAsync(CategoryCreateUpdateDto dto, int id);//Me actualiza una categoria
-        Task<bool> DeleteCategoryAsync(int categoryId);//Me elimina una categoria
+        Task <bool> DeleteCategoryAsync(int categoryId) ;//Me elimina una categoria
     }
+
 }
