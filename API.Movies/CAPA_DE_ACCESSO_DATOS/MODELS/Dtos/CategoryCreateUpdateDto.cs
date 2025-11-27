@@ -2,7 +2,7 @@
 
 namespace API.Movies.CAPA_DE_ACCESSO_DATOS.MODELS.Dtos
 {
-    public class CategoryCreateDto
+    public class CategoryCreateUpdateDto
     {
         [Required(ErrorMessage = "El nombre de la categoria es obligatorio. ")]
         [MaxLength(100, ErrorMessage = "El número máximo de caracteres es 100. ")]
